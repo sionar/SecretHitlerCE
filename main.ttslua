@@ -2317,6 +2317,17 @@ function setupCoroutine()
 		return true
 	end
 
+	----Expansion stuff
+	local objs = getAllObjects()
+	for k,v in pairs(objs) do
+		if v.tag == 'Deck' and v.getName() == 'Players' then
+			v.destruct()
+			break
+		end
+	end
+
+	-------------------
+
 	local playerOneName = Player[players[1]].steam_name
 	if not playerOneName or string.match(playerOneName, 'Player %d') then
 		printToAll('Hotseat game detected.', {1,1,1})
